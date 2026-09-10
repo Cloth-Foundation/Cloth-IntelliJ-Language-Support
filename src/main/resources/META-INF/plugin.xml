@@ -1,33 +1,24 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
     <id>org.clothfoundation.cloth.cloth-jetbrains</id>
-
-    <!-- Public plugin name should be written in Title Case.
-     Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-name -->
-    <name>Cloth-jetbrains</name>
-
-    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor url="https://cloth.dev">YourCompany</vendor>
-
-    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
-         Guidelines: https://plugins.jetbrains.com/docs/marketplace/best-practices-for-listing.html#plugin-description -->
+    <name>Cloth</name>
+    <vendor url="https://cloth.dev">Cloth Foundation</vendor>
     <description><![CDATA[
-        Enter short description for your plugin here.<br>
-        <em>most HTML tags may be used</em>
+        Language support for Cloth, beginning with file recognition and syntax highlighting.
         ]]></description>
 
-    <!-- Product and plugin compatibility requirements.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
-    <depends>com.intellij.modules.lsp</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
 
-    <resource-bundle>messages.MyMessageBundle</resource-bundle>
-
-    <!-- Extensions defined by the plugin.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="MyToolWindow" factoryClass="org.clothfoundation.cloth.MyToolWindowFactory"
-                    icon="AllIcons.Toolwindows.ToolWindowPalette"/>
+        <fileType name="Cloth"
+                  language="Cloth"
+                  extensions="co;cloth;cl"
+                  implementationClass="org.clothfoundation.cloth.ClothFileType"
+                  fieldName="INSTANCE"/>
+        <lang.syntaxHighlighterFactory language="Cloth"
+                                       implementationClass="org.clothfoundation.cloth.highlighting.ClothSyntaxHighlighterFactory"/>
+        <colorSettingsPage implementation="org.clothfoundation.cloth.highlighting.ClothColorSettingsPage"/>
+        <fileIconProvider implementation="org.clothfoundation.cloth.icons.ClothFileIconProvider"/>
+        <projectViewNodeDecorator implementation="org.clothfoundation.cloth.projectview.ClothSourceFolderDecorator"/>
     </extensions>
-
 </idea-plugin>
