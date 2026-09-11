@@ -10,6 +10,7 @@ Language support for [Cloth](https://cloth.dev) in IntelliJ IDEA and other JetBr
 - Provides a configurable **Cloth** page under **Settings | Editor | Color Scheme**.
 - Shows Cloth `src` directories with the IDE's source-root folder icon.
 - Shows distinct file icons for classes, interfaces, structs, enums, and errors.
+- Supports line/block comment toggling, matching delimiters, and automatic quote/delimiter pairing.
 - Uses an incremental lexer designed to be reused by future parser, PSI, and LSP work.
 
 ## Development

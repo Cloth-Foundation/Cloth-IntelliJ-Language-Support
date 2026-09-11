@@ -111,6 +111,12 @@ class ClothLexer : LexerBase() {
             first.isIdentifierStart() -> scanIdentifier()
             first.isAsciiDigit() -> scanNumber()
             scanOperator() -> Unit
+            PAIRED_DELIMITERS[first] != null -> {
+                context = CONTEXT_NONE
+                tokenEnd = currentOffset + 1
+                tokenType = PAIRED_DELIMITERS.getValue(first)
+            }
+
             first in PUNCTUATION -> {
                 context = CONTEXT_NONE
                 tokenEnd = currentOffset + 1
@@ -261,7 +267,7 @@ class ClothLexer : LexerBase() {
             spelling in TYPE_KEYWORDS -> ClothTokenTypes.PRIMITIVE_TYPE
             spelling == "true" || spelling == "false" -> ClothTokenTypes.BOOLEAN
             spelling == "null" -> ClothTokenTypes.NULL
-            spelling == "self" || spelling == "super" -> ClothTokenTypes.KEYWORD//ClothTokenTypes.LANGUAGE_VARIABLE
+            spelling == "self" || spelling == "super" -> ClothTokenTypes.KEYWORD
             spelling in KEYWORDS -> ClothTokenTypes.KEYWORD
             priorContext == CONTEXT_FUNCTION_NAME -> ClothTokenTypes.FUNCTION_DECLARATION
             priorContext == CONTEXT_MEMBER -> {
@@ -404,7 +410,15 @@ class ClothLexer : LexerBase() {
         private val BUILTIN_META_FUNCTIONS = setOf("parse", "slice")
         private val SIMPLE_ESCAPES = setOf('n', 'r', 't', '\\', '\'', '"', '0')
         private val BASE_PREFIXES = setOf('b', 'B', 'o', 'O', 'x', 'X')
-        private val PUNCTUATION = setOf('(', ')', '{', '}', '[', ']', ',', ';', ':')
+        private val PAIRED_DELIMITERS = mapOf(
+            '(' to ClothTokenTypes.LEFT_PARENTHESIS,
+            ')' to ClothTokenTypes.RIGHT_PARENTHESIS,
+            '{' to ClothTokenTypes.LEFT_BRACE,
+            '}' to ClothTokenTypes.RIGHT_BRACE,
+            '[' to ClothTokenTypes.LEFT_BRACKET,
+            ']' to ClothTokenTypes.RIGHT_BRACKET,
+        )
+        private val PUNCTUATION = setOf(',', ';', ':')
         private val IMPORT_PATH_OPERATORS = setOf("::", ".", "*")
 
         private val OPERATORS = listOf(

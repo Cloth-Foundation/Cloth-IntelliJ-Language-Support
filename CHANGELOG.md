@@ -12,6 +12,7 @@
 - Import paths remain unstyled, while primitive types use a distinct keyword-derived color.
 - Cloth `src` directories use the IDE's source-root folder icon in the Project view.
 - Cloth files use class, interface, struct, enum, or error icons based on their top-level declaration.
+- Cloth editors support line/block comment toggling, matching delimiters, and automatic quote/delimiter pairing.
 
 ### Removed
 

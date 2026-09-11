@@ -10,7 +10,6 @@ object ClothTokenTypes {
     @JvmField val TYPE = ClothTokenType("TYPE")
     @JvmField val BOOLEAN = ClothTokenType("BOOLEAN")
     @JvmField val NULL = ClothTokenType("NULL")
-    @JvmField val LANGUAGE_VARIABLE = ClothTokenType("LANGUAGE_VARIABLE")
 
     @JvmField val IDENTIFIER = ClothTokenType("IDENTIFIER")
     @JvmField val IMPORT_PATH = ClothTokenType("IMPORT_PATH")
@@ -27,5 +26,11 @@ object ClothTokenTypes {
     @JvmField val INVALID_ESCAPE = ClothTokenType("INVALID_ESCAPE")
 
     @JvmField val OPERATOR = ClothTokenType("OPERATOR")
+    @JvmField val LEFT_PARENTHESIS = ClothTokenType("LEFT_PARENTHESIS")
+    @JvmField val RIGHT_PARENTHESIS = ClothTokenType("RIGHT_PARENTHESIS")
+    @JvmField val LEFT_BRACE = ClothTokenType("LEFT_BRACE")
+    @JvmField val RIGHT_BRACE = ClothTokenType("RIGHT_BRACE")
+    @JvmField val LEFT_BRACKET = ClothTokenType("LEFT_BRACKET")
+    @JvmField val RIGHT_BRACKET = ClothTokenType("RIGHT_BRACKET")
     @JvmField val PUNCTUATION = ClothTokenType("PUNCTUATION")
 }

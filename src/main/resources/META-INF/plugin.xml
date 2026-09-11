@@ -17,6 +17,12 @@
                   fieldName="INSTANCE"/>
         <lang.syntaxHighlighterFactory language="Cloth"
                                        implementationClass="org.clothfoundation.cloth.highlighting.ClothSyntaxHighlighterFactory"/>
+        <lang.commenter language="Cloth"
+                        implementationClass="org.clothfoundation.cloth.editor.ClothCommenter"/>
+        <lang.braceMatcher language="Cloth"
+                           implementationClass="org.clothfoundation.cloth.editor.ClothBraceMatcher"/>
+        <lang.quoteHandler language="Cloth"
+                           implementationClass="org.clothfoundation.cloth.editor.ClothQuoteHandler"/>
         <colorSettingsPage implementation="org.clothfoundation.cloth.highlighting.ClothColorSettingsPage"/>
         <fileIconProvider implementation="org.clothfoundation.cloth.icons.ClothFileIconProvider"/>
         <projectViewNodeDecorator implementation="org.clothfoundation.cloth.projectview.ClothSourceFolderDecorator"/>

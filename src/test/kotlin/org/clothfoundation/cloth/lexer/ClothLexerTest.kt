@@ -12,7 +12,7 @@ class ClothLexerTest {
     @Test
     fun `classifies Cloth declarations and contextual names`() {
         val tokens = significantTokens(
-            "abstract class : Base is Renderable { override func Render(int32? count) { println(self.name); } }",
+            "abstract class : Base is Renderable { override func Render(int32? count) { println(self.name, super); } }",
         )
 
         assertToken(tokens, "abstract", ClothTokenTypes.MODIFIER)
@@ -23,7 +23,8 @@ class ClothLexerTest {
         assertToken(tokens, "Render", ClothTokenTypes.FUNCTION_DECLARATION)
         assertToken(tokens, "int32", ClothTokenTypes.PRIMITIVE_TYPE)
         assertToken(tokens, "println", ClothTokenTypes.BUILTIN_FUNCTION)
-        assertToken(tokens, "self", ClothTokenTypes.LANGUAGE_VARIABLE)
+        assertToken(tokens, "self", ClothTokenTypes.KEYWORD)
+        assertToken(tokens, "super", ClothTokenTypes.KEYWORD)
         assertToken(tokens, "name", ClothTokenTypes.PROPERTY)
     }
 
@@ -58,6 +59,18 @@ class ClothLexerTest {
         assertToken(tokens, "length", ClothTokenTypes.PROPERTY)
         assertToken(tokens, "slice", ClothTokenTypes.BUILTIN_FUNCTION)
         assertTrue(tokens.count { it.type == ClothTokenTypes.OPERATOR } >= 3)
+    }
+
+    @Test
+    fun `emits distinct tokens for paired delimiters`() {
+        val tokens = significantTokens("func Main() { values[0]; }")
+
+        assertToken(tokens, "(", ClothTokenTypes.LEFT_PARENTHESIS)
+        assertToken(tokens, ")", ClothTokenTypes.RIGHT_PARENTHESIS)
+        assertToken(tokens, "{", ClothTokenTypes.LEFT_BRACE)
+        assertToken(tokens, "}", ClothTokenTypes.RIGHT_BRACE)
+        assertToken(tokens, "[", ClothTokenTypes.LEFT_BRACKET)
+        assertToken(tokens, "]", ClothTokenTypes.RIGHT_BRACKET)
     }
 
     @Test

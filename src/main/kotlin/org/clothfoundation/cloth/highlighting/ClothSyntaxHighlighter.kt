@@ -22,7 +22,6 @@ class ClothSyntaxHighlighter : SyntaxHighlighterBase() {
         ClothTokenTypes.PRIMITIVE_TYPE -> PRIMITIVE_TYPE_KEYS
         ClothTokenTypes.TYPE -> TYPE_KEYS
         ClothTokenTypes.BOOLEAN, ClothTokenTypes.NULL -> CONSTANT_KEYS
-        ClothTokenTypes.LANGUAGE_VARIABLE -> LANGUAGE_VARIABLE_KEYS
         ClothTokenTypes.FUNCTION_DECLARATION -> FUNCTION_DECLARATION_KEYS
         ClothTokenTypes.FUNCTION_CALL -> FUNCTION_CALL_KEYS
         ClothTokenTypes.BUILTIN_FUNCTION -> BUILTIN_FUNCTION_KEYS
@@ -33,7 +32,14 @@ class ClothSyntaxHighlighter : SyntaxHighlighterBase() {
         ClothTokenTypes.VALID_ESCAPE -> VALID_ESCAPE_KEYS
         ClothTokenTypes.INVALID_ESCAPE -> INVALID_ESCAPE_KEYS
         ClothTokenTypes.OPERATOR -> OPERATOR_KEYS
-        ClothTokenTypes.PUNCTUATION -> PUNCTUATION_KEYS
+        ClothTokenTypes.PUNCTUATION,
+        ClothTokenTypes.LEFT_PARENTHESIS,
+        ClothTokenTypes.RIGHT_PARENTHESIS,
+        ClothTokenTypes.LEFT_BRACE,
+        ClothTokenTypes.RIGHT_BRACE,
+        ClothTokenTypes.LEFT_BRACKET,
+        ClothTokenTypes.RIGHT_BRACKET,
+        -> PUNCTUATION_KEYS
         TokenType.BAD_CHARACTER -> BAD_CHARACTER_KEYS
         else -> EMPTY_KEYS
     }
@@ -68,12 +74,6 @@ class ClothSyntaxHighlighter : SyntaxHighlighterBase() {
 
         @JvmField
         val CONSTANT = createTextAttributesKey("CLOTH_CONSTANT", DefaultLanguageHighlighterColors.CONSTANT)
-
-        @JvmField
-        val LANGUAGE_VARIABLE = createTextAttributesKey(
-            "CLOTH_LANGUAGE_VARIABLE",
-            DefaultLanguageHighlighterColors.PREDEFINED_SYMBOL,
-        )
 
         @JvmField
         val FUNCTION_DECLARATION = createTextAttributesKey(
@@ -145,7 +145,6 @@ class ClothSyntaxHighlighter : SyntaxHighlighterBase() {
         private val PRIMITIVE_TYPE_KEYS = arrayOf(PRIMITIVE_TYPE)
         private val TYPE_KEYS = arrayOf(TYPE)
         private val CONSTANT_KEYS = arrayOf(CONSTANT)
-        private val LANGUAGE_VARIABLE_KEYS = arrayOf(LANGUAGE_VARIABLE)
         private val FUNCTION_DECLARATION_KEYS = arrayOf(FUNCTION_DECLARATION)
         private val FUNCTION_CALL_KEYS = arrayOf(FUNCTION_CALL)
         private val BUILTIN_FUNCTION_KEYS = arrayOf(BUILTIN_FUNCTION)

@@ -32,7 +32,6 @@ class ClothColorSettingsPage : ColorSettingsPage {
             AttributesDescriptor("Types//Primitive", ClothSyntaxHighlighter.PRIMITIVE_TYPE),
             AttributesDescriptor("Types//Named", ClothSyntaxHighlighter.TYPE),
             AttributesDescriptor("Constant", ClothSyntaxHighlighter.CONSTANT),
-            AttributesDescriptor("Language variable", ClothSyntaxHighlighter.LANGUAGE_VARIABLE),
             AttributesDescriptor("Functions//Declaration", ClothSyntaxHighlighter.FUNCTION_DECLARATION),
             AttributesDescriptor("Functions//Call", ClothSyntaxHighlighter.FUNCTION_CALL),
             AttributesDescriptor("Functions//Built-in", ClothSyntaxHighlighter.BUILTIN_FUNCTION),

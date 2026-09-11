@@ -25,6 +25,15 @@ object ClothTokenSets {
         ClothTokenTypes.TYPE,
         ClothTokenTypes.BOOLEAN,
         ClothTokenTypes.NULL,
-        ClothTokenTypes.LANGUAGE_VARIABLE,
+    )
+
+    @JvmField
+    val PAIRED_DELIMITERS: TokenSet = TokenSet.create(
+        ClothTokenTypes.LEFT_PARENTHESIS,
+        ClothTokenTypes.RIGHT_PARENTHESIS,
+        ClothTokenTypes.LEFT_BRACE,
+        ClothTokenTypes.RIGHT_BRACE,
+        ClothTokenTypes.LEFT_BRACKET,
+        ClothTokenTypes.RIGHT_BRACKET,
     )
 }
